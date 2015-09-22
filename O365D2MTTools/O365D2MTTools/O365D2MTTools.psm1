@@ -367,7 +367,8 @@ function Grant-D2MTMailboxPermission
     Import Mailbox Permissions from Exported Permissions into MT Mailbox
 .EXAMPLE
    Import-D2MTMailboxPermission -File .\ExportedPermissions.csv -Domain contoso
-
+.NOTES
+   Specify short domain names of ACLs to import from exported data
 #>
 function Import-D2MTMailboxPermission
 {
@@ -386,7 +387,7 @@ function Import-D2MTMailboxPermission
                    Position=0)]
         $File,
 
-        # Domain Names to include when filtering permissions
+        # Domain Names to include when filtering permissions to apply
 		[Parameter(Mandatory=$true,
                    ValueFromPipelineByPropertyName=$true,
                    Position=1)]
@@ -459,7 +460,7 @@ function Resolve-D2MTMigratedMailboxPermission
     [OutputType([String])]
     Param
     (
-        # Param1 help description
+        # Email Address of the Mailbox to Resolve Permissions
         [Parameter(Mandatory=$true, 
                    ValueFromPipeline=$true,
                    ValueFromPipelineByPropertyName=$true, 
