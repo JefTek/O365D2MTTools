@@ -94,7 +94,7 @@ function Export-D2MTMailboxPermission
 			if ($null -ne $MBperms)
 			{
 				
-                $ExportedPerms += Format-D2MTExportedMailboxPermissions -MailboxEmail $MailboxEmail -Permissions $MBperms -PermissionType Mailbox
+                $ExportedPerms += Format-D2MTExportedMailboxPermission -MailboxEmail $MailboxEmail -Permissions $MBperms -PermissionType Mailbox
                 
 			}
 			
@@ -102,7 +102,7 @@ function Export-D2MTMailboxPermission
 			if ($null -ne $ADperms)
 			{
 				
-                $ExportedPerms += Format-D2MTExportedMailboxPermissions -MailboxEmail $MailboxEmail -Permissions $ADperms -PermissionType Recipient
+                $ExportedPerms += Format-D2MTExportedMailboxPermission -MailboxEmail $MailboxEmail -Permissions $ADperms -PermissionType Recipient
                 
 			}
 
@@ -414,7 +414,7 @@ function Import-D2MTMailboxPermission
 
 			$filteredCsv|ForEach-Object{
 
-				Grant-D2MTMailboxPermissions -MailboxEmail $_.MailboxEmail -AccessRights $_.AccessRights -UserEmail $_.UserEmail -PermissionType $_.PermissionType
+				Grant-D2MTMailboxPermission -MailboxEmail $_.MailboxEmail -AccessRights $_.AccessRights -UserEmail $_.UserEmail -PermissionType $_.PermissionType
 			}
 		}
     }
